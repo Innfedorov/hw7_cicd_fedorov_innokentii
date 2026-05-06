@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  ml-service-green:
+    image: ml-service:v1.1.0
+    ports:
+      - "8082:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
